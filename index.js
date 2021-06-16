@@ -8,6 +8,7 @@ const readlineSync = require('readline-sync');
 
 clear();
 
+//npm download to display name
 console.log(
     chalk.yellow(
         figlet.textSync('Jowel', { horizontalLayout: 'full' })
@@ -17,12 +18,14 @@ console.log(
 bookList = [];
 readingList = [];
 
+// function to get book data from API 
 const getBook = async(bookTitle) => {
     try {
         const resp = await fetch('https://www.googleapis.com/books/v1/volumes?q=' + bookTitle)
         const data = await resp.json()
         data.items.slice(0, 9)
             .forEach(id => {
+                //grabbing title and author data to be pushed into empty array to build list of books
                 bookList.push(`Title: ${id.volumeInfo.title} ; ` + `Author: ${id.volumeInfo.authors}   `)
             })
     } catch (err) {
@@ -30,12 +33,15 @@ const getBook = async(bookTitle) => {
     }
 }
 
+//function to update the list of books that user wants to read
 const updateReadingList = (bookId) => {
     readingList.push(bookList[bookId])
     bookList.length = 0
     console.log("Book added in the list!\n")
 }
 
+
+//function to create prompts/questions
 const openClub = async() => {
     try {
         while (true) {
@@ -49,7 +55,7 @@ const openClub = async() => {
                 if (readingList.length === 0) {
                     console.log("Nothing inside 🤷\n")
                 } else {
-                    console.log(`Your Reading List:\n${readingList.join("\n")}`)
+                    console.log(`Reading List:\n${readingList.join("\n")}`)
                 }
             } else {
                 if (question === "3") {
