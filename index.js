@@ -1,25 +1,19 @@
-const chalk = require('chalk');
+
 const clear = require('clear');
-const figlet = require('figlet');
 const fetch = require('node-fetch');
 const readlineSync = require('readline-sync');
 
 
 
 clear();
-3
-//npm download to display name
-console.log(
-    chalk.yellow(
-        figlet.textSync('Jowel', { horizontalLayout: 'full' })
-    )
-);
+
+
 
 bookList = [];
 readingList = [];
 
 // function to get book data from API 
-const getBook = async (bookTitle) => {
+const getBook = async(bookTitle) => {
     try {
         const resp = await fetch('https://www.googleapis.com/books/v1/volumes?q=' + bookTitle)
         const data = await resp.json()
@@ -42,10 +36,10 @@ const updateReadingList = (bookId) => {
 
 
 //function to create prompts/questions
-const openClub = async () => {
+const openClub = async() => {
     try {
-        const question = readlineSync.question("Welcome to Jowel's Book club!\n To search for a book - use key [1];\n To see your reading list - use key [2];\n To leave the store - use key [3]\n")
-        do {
+        while (true) {
+            const question = readlineSync.question("Welcome to Jowel's Book club!\n To search for a book - use key [1];\n To see your reading list - use key [2];\n To leave the store - use key [3]\n")
             if (question === "1") {
                 const book = readlineSync.question("Type the book you are looking for\n")
                 await getBook(book)
@@ -60,9 +54,11 @@ const openClub = async () => {
             } else {
                 if (question === "3") {
                     console.log("Thank you and come again!\n");
+                    break;
+
                 }
             }
-        } while (question !== "3")
+        }
     } catch (err) {
         console.log("Oh no! Something went wrong :(", err)
     }
