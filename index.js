@@ -41,8 +41,12 @@ const openClub = async() => {
         while (true) {
             const question = readlineSync.question("Welcome to Jowel's Book club!\n To search for a book - use key [1];\n To see your reading list - use key [2];\n To leave the store - use key [3]\n")
             if (question === "1") {
+
                 const book = readlineSync.question("Type the book you are looking for\n")
+
                 await getBook(book)
+
+                //"keyInSelect" formats a list for the user & `immediately gets the user's response by a single key without the Enter key
                 const bookSelected = readlineSync.keyInSelect(bookList, "Which book do you want to add?\n")
                 updateReadingList(bookSelected)
             } else if (question === "2") {
@@ -54,6 +58,8 @@ const openClub = async() => {
             } else {
                 if (question === "3") {
                     console.log("Thank you and come again!\n");
+
+                    //this exits out of the application
                     break;
 
                 }
