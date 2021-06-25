@@ -8,7 +8,7 @@ const readlineSync = require('readline-sync');
 clear();
 
 
-
+//empty arrays to populate books and reading list  
 bookList = [];
 readingList = [];
 
@@ -17,6 +17,7 @@ const getBook = async(bookTitle) => {
     try {
         const resp = await fetch('https://www.googleapis.com/books/v1/volumes?q=' + bookTitle)
         const data = await resp.json()
+        //slice method grabs the amount of items I want to show while 9 items when you search
         data.items.slice(0, 9)
             .forEach(id => {
                 //grabbing title and author data to be pushed into empty array to build list of books
@@ -28,7 +29,7 @@ const getBook = async(bookTitle) => {
 };
 
 
-//function to update the list of books that user wants to read
+//function to update and "populate" the list of books that user wants to read
 const updateReadingList = (bookId) => {
     readingList.push(bookList[bookId])
     bookList.length = 0
@@ -40,6 +41,7 @@ const updateReadingList = (bookId) => {
 const openClub = async() => {
     try {
         while (true) {
+            //"readlineSync" package helps list the items i want to show and numbers it to make the user select which item they like
             const question = readlineSync.question("Welcome to Jowel's Book club!\n To search for a book - use key [1];\n To see your reading list - use key [2];\n To leave the store - use key [3]\n")
             if (question === "1") {
 
@@ -75,6 +77,7 @@ const openClub = async() => {
 
 openClub();
 
+//exporting the functions to be used in other files
 module.exports = {
     resp,
     data
