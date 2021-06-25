@@ -23,7 +23,7 @@ node index.js
 ## Technologies
 
 + Node.js
-
++ Jest 27.0
 
 
 ### Contact
