@@ -13,7 +13,7 @@ bookList = [];
 readingList = [];
 
 // function to get book data from API 
-const getBook = async(bookTitle) => {
+export const getBook = async(bookTitle) => {
     try {
         const resp = await fetch('https://www.googleapis.com/books/v1/volumes?q=' + bookTitle)
         const data = await resp.json()
@@ -25,18 +25,19 @@ const getBook = async(bookTitle) => {
     } catch (err) {
         console.log("Oh no! Something went wrong :(", err)
     }
-}
+};
+
 
 //function to update the list of books that user wants to read
-const updateReadingList = (bookId) => {
+export const updateReadingList = (bookId) => {
     readingList.push(bookList[bookId])
     bookList.length = 0
     console.log("Book added in the list!\n")
-}
+};
 
 
 //function to create prompts/questions
-const openClub = async() => {
+export const openClub = async() => {
     try {
         while (true) {
             const question = readlineSync.question("Welcome to Jowel's Book club!\n To search for a book - use key [1];\n To see your reading list - use key [2];\n To leave the store - use key [3]\n")

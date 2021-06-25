@@ -32,5 +32,8 @@
     "readline-sync": "^1.4.10",
     "simple-git": "^2.40.0",
     "touch": "^3.1.0"
+  },
+  "devDependencies": {
+    "jest": "^27.0.5"
   }
 }
