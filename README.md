@@ -15,10 +15,11 @@ A Command Line application using Google Books API that helps you search and stor
 ```
 cd ./Book-Search-Google
 npm i
+cd ./JS
 node index.js
 ```
 
-![](https://media.giphy.com/media/mjQ6YzWS0W9m1yCsV4/giphy.gif)
+![](https://media.giphy.com/media/F2kxNLTSSpojbRhnD6/giphy.gif)
 
 ## Technologies
 
@@ -36,6 +37,7 @@ node index.js
 
 + Testing did not workout entirely the way I wanted.
 + The use of "Chalk" package created node_modules and was unnecessary for the application.
+
 
 ### Contact
 
