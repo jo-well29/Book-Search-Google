@@ -1,6 +1,6 @@
 # Book-Search-Google
 
-A Command Line application using Google Books API that helps you search and store a list of books.
+A Command Line application using Google Books API that helps you search and store a list of books. This application is in Node.js.
 
 ## Installation
 
@@ -24,7 +24,18 @@ node index.js
 
 + Node.js
 + Jest 27.0
++ readLine-Sync 1.4.10
 
+## Wins
+
++ Used API call for a command Line Application.
++ First time use and installation of testing framework Jest.
++ Used packages to improve usability of application.
+
+## Loses
+
++ Testing did not workout entirely the way I wanted.
++ The use of "Chalk" package created node_modules and was unnecessary for the application.
 
 ### Contact
 
