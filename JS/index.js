@@ -13,7 +13,7 @@ bookList = [];
 readingList = [];
 
 // function to get book data from API 
-export const getBook = async(bookTitle) => {
+const getBook = async(bookTitle) => {
     try {
         const resp = await fetch('https://www.googleapis.com/books/v1/volumes?q=' + bookTitle)
         const data = await resp.json()
@@ -29,7 +29,7 @@ export const getBook = async(bookTitle) => {
 
 
 //function to update the list of books that user wants to read
-export const updateReadingList = (bookId) => {
+const updateReadingList = (bookId) => {
     readingList.push(bookList[bookId])
     bookList.length = 0
     console.log("Book added in the list!\n")
@@ -37,7 +37,7 @@ export const updateReadingList = (bookId) => {
 
 
 //function to create prompts/questions
-export const openClub = async() => {
+const openClub = async() => {
     try {
         while (true) {
             const question = readlineSync.question("Welcome to Jowel's Book club!\n To search for a book - use key [1];\n To see your reading list - use key [2];\n To leave the store - use key [3]\n")
@@ -74,3 +74,8 @@ export const openClub = async() => {
 
 
 openClub();
+
+module.exports = {
+    resp,
+    data
+}
