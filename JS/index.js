@@ -4,7 +4,7 @@ const fetch = require('node-fetch');
 const readlineSync = require('readline-sync');
 
 
-
+//clears the terminal history so the application can appear on its own
 clear();
 
 
